@@ -1,0 +1,18 @@
+# WARNING: this file is not suitable for production, please use with caution
+version: '3'
+
+services:
+  web:
+    image: expfactory_experiments_api
+    build: .
+    command: uwsgi --http 0.0.0.0:5000 --module expfactory_experiments_api.wsgi:app
+    env_file:
+      - ./.flaskenv
+    environment:
+      - DATABASE_URI=sqlite:////db/expfactory_experiments_api.db
+    volumes:
+      - ./expfactory_experiments_api:/code/expfactory_experiments_api
+      - ./db/:/db/
+      - ./experiment_repos:/experiment_repos
+    ports:
+      - "5000:5000"
