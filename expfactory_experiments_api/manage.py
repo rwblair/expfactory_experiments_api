@@ -23,11 +23,11 @@ def init():
 
 def get_experiment_type(experiment):
     if experiment["template"] in ["jspsych"]:
-        return "experiments"
+        return "experiment"
     elif experiment["template"] in ["survey"]:
-        return "surveys"
+        return "survey"
     elif experiment["template"] in ["phaser"]:
-        return "games"
+        return "game"
 
 exclude = ["run"]
 
