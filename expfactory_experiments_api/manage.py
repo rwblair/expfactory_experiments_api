@@ -49,7 +49,7 @@ def import_exps():
             name = config_json["exp_id"]
             exp_in_db = db.session.query(Experiment).filter_by(name=name).first()
             if exp_in_db is None:
-                config_json["preview"] = f"https://expfactory.org/{name}/preview"
+                config_json["preview"] = f"https://expfactory.org/experiments/{name}/preview"
                 repo = git.Repo(root, search_parent_directories=True)
                 repo_path = repo.git.rev_parse("--show-toplevel")
                 config_json["type"] = get_experiment_type(config_json)
