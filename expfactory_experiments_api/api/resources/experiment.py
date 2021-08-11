@@ -21,6 +21,5 @@ class ExperimentList(Resource):
         schema = ExperimentListSchema(many=True)
         query = Experiment.query
         if search:
-            print(search)
             query = Experiment.query.filter(Experiment.config.ilike(f"%{search}%"))
         return paginate(query, schema)
